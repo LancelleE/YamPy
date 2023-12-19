@@ -1,36 +1,38 @@
 class Player:
+    # Score Sheet
+    # # Single numbers
+    aces = 0
+    twos = 0
+    threes = 0
+    fours = 0
+    fives = 0
+    sixes = 0
+
+    # # Single numbers total
+    minor = 0
+
+
+    # # Single numbers bonus
+    minor_bonus = 0
+
+    # # Major
+    three_of_a_kind = 0
+    four_of_a_kind = 0
+    full_house = 0
+    small_straight = 0
+    large_straight = 0
+    yahtzee = 0
+    chance = 0
+
+    # # Major total
+    major = 0
+
+    # # Total
+    total = 0
+
     def __init__(self, playerName) -> None:
         self.playerName = playerName
 
 
-        # Score Sheet
-        # # Single numbers
-        self.aces = 0
-        self.twos = 0
-        self.threes = 0
-        self.fours = 0
-        self.fives = 0
-        self.sixes = 0
 
-        # # Single numbers total
-        self.minor = 0
-
-
-        # # Single numbers bonus
-        self.minor_bonus = 0
-
-        # # Major
-        self.three_of_a_kind = 0
-        self.four_of_a_kind = 0
-        self.full_house = 0
-        self.small_straight = 0
-        self.large_straight = 0
-        self.yahtzee = 0
-        self.chance = 0
-
-        # # Major total
-        self.major = 0
-
-        # # Total
-        self.total = 0
         
