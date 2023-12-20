@@ -18,20 +18,22 @@ if __name__ == '__main__':
 
         game.new_round()
         game.display_score()
-        
+
         print(f'Round {game.round}')
         for p in game.players:
             print(f'Au tour de {p.playerName} !')
             # p.get_score()
             dice = Dice()
             dice.announce_dices()
-            print(f'Vous pouvez relancer {dice.rolls_allowed} fois.\n')
-
-            if dice.reroll_authorized():
+            while dice.reroll_authorized():
                 nb_reroll = int(input('Nombre de dés à relancer : '))
-                for _ in range(nb_reroll):
-                    change = input('Quel dé changer ? Ecrire par exemple D1 pour le dé 1.\n')
-                    dice.reroll(change)
+                if nb_reroll > 0:
+                    for _ in range(nb_reroll):
+                        change = input('Quel dé changer ? Ecrire par exemple D1 pour le dé 1.\n')
+                        dice.reroll(change)
+                        dice.decrease_rolls()
+                else:
+                    break
                 
                 dice.announce_dices()
 
