@@ -78,6 +78,14 @@ class Player:
         headers = ['Figure','Score']
         print(tabulate(data, headers=headers, tablefmt="rounded_outline"))
 
+    def refresh_bonuses(self):
+        self.minor_only = sum([self.aces, self.twos, self.threes, self.fours, self.fives, self.sixes])
+        self.minor_bonus = 35 if self.minor_only >= 63 else 0
+        self.minor_and_bonus = self.minor_only + self.minor_bonus
+
+        self.major = sum([self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.small_straight, self.large_straight, self.yahtzee, self.chance])
+        self.total = self.minor_and_bonus + self.major
+
     
 
 

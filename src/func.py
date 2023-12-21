@@ -62,7 +62,6 @@ def choice_function(figure, dice):
 
     if figure in actions:
         result = actions[figure]()  # Appelle la fonction correspondante
-        # print(f"Résultat pour '{figure}': {result}")  # Affichage pour débogage
         return result
     else:
         print(f"La clé '{figure}' n'est pas reconnue.")
@@ -70,7 +69,7 @@ def choice_function(figure, dice):
     
 
 def score(player, de, figure):
-    print(f'La figure à scorer est ' + figure)
+    print(f'\nLa figure à scorer est ' + figure)
     valeur = choice_function(figure, de)
     print(valeur)
     setattr(player, player.association[figure], valeur)

@@ -47,3 +47,6 @@ if __name__ == '__main__':
                 projection_score(p, dice)
                 scored_figure = choix_figure_score(p)
                 score(p, dice, scored_figure)
+                p.refresh_bonuses()
+                p.get_score()
+                keep_going = input('On continue ?\n')
