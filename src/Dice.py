@@ -17,6 +17,7 @@ class Dice():
 
     def reroll(self, id_dice):
         setattr(self, id_dice, random.randint(1,6))
+        self.dice_set = [self.D1, self.D2, self.D3, self.D4, self.D5]
     
     def decrease_rolls(self):
         self.rolls_allowed -= 1
@@ -25,7 +26,7 @@ class Dice():
         return self.rolls_allowed > 0
     
     def count_values(self, value):
-        self.dice_set.count(value)*value
+        return self.dice_set.count(value)*value
 
     def count_brelan(self):
         counts = Counter(self.dice_set)
@@ -43,7 +44,7 @@ class Dice():
     
     def count_yahtzee(self):
         counts = Counter(self.dice_set)
-        for figure, value in counts.items():
+        for _, value in counts.items():
             if value == 5:
                 return 50
         return 0
@@ -95,4 +96,3 @@ class Dice():
     
     def count_luck(self):
         return sum(self.dice_set)
-

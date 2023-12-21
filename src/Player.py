@@ -33,6 +33,8 @@ class Player:
     # # Total
     total = 0
 
+    already_scored = []
+
     def __init__(self, playerName) -> None:
         self.playerName = playerName
 
@@ -58,6 +60,8 @@ class Player:
         ]
         headers = ['Figure','Score']
         print(tabulate(data, headers=headers, tablefmt="rounded_outline"))
+
+    
 
 
 

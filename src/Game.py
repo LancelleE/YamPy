@@ -22,11 +22,9 @@ class Game():
             ['4'] + [str(p.fours) for p in self.players],
             ['5'] + [str(p.fives) for p in self.players],
             ['6'] + [str(p.sixes) for p in self.players],
-            SEPARATING_LINE,
             ['Sous-total (hors bonus)'] + [str(p.minor_only) for p in self.players],
-            ['Bonus (atteint si > 63)'] + [str(p.minor_bonus) for p in self.players],
+            ['Bonus (atteint si >= 63)'] + [str(p.minor_bonus) for p in self.players],
             ['Sous-total (avec bonus)'] + [str(p.minor_and_bonus) for p in self.players],
-            SEPARATING_LINE,
             ['Brelan'] + [str(p.three_of_a_kind) for p in self.players],
             ['Carré'] + [str(p.four_of_a_kind) for p in self.players],
             ['Full house'] + [str(p.full_house) for p in self.players],
@@ -34,11 +32,8 @@ class Game():
             ['Grande suite'] + [str(p.large_straight) for p in self.players],
             ['Yahtzee'] + [str(p.yahtzee) for p in self.players],
             ['Chance'] + [str(p.chance) for p in self.players],
-            SEPARATING_LINE,
             ['Sous-total'] + [str(p.major) for p in self.players],
-            SEPARATING_LINE,
-            SEPARATING_LINE,
             ['Total'] + [str(p.total) for p in self.players]
         ]
         
-        print(tabulate(data, headers=headers))
+        print(tabulate(data, headers=headers, tablefmt="rounded_outline"))
