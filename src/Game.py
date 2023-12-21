@@ -1,5 +1,6 @@
 from tabulate import tabulate, SEPARATING_LINE
 class Game():
+
     def __init__(self, nb_players) -> None:
         self.nb_players = nb_players
         self.round = 0

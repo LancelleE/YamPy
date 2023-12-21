@@ -26,7 +26,7 @@ class Dice():
         return self.rolls_allowed > 0
     
     def count_values(self, value):
-        return self.dice_set.count(value)*value
+        return int(self.dice_set.count(value)*value)
 
     def count_brelan(self):
         counts = Counter(self.dice_set)

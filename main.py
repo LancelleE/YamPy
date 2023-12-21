@@ -1,7 +1,7 @@
 from src.Player import Player
 from src.Dice import Dice
 from src.Game import Game
-from src.func import choix_reroll, projection_score
+from src.func import choix_reroll, projection_score, choix_figure_score, score
 
 if __name__ == '__main__':
     nb_player = int(input('How many players ?\n'))
@@ -43,12 +43,7 @@ if __name__ == '__main__':
                     break
                     
             else:
-                print('coucou')
-                projection_score(p, dice)
-                # Demander à scorer
-            
                 dice.announce_dices()
-
-
-            break
-        break
+                projection_score(p, dice)
+                scored_figure = choix_figure_score(p)
+                score(p, dice, scored_figure)

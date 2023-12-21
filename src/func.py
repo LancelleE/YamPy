@@ -32,7 +32,46 @@ def projection_score(player, dice):
     headers = ['Figure','Score']
     print(tabulate(data, headers=headers, tablefmt="rounded_outline"))
     
+def choix_figure_score(player):
+    figure = input('Quelle figure scorer ? Ecrire en toute lettre comme dans la tableau du dessus.\n')
+    while figure not in player.scorable:
+        print('Choix incorrect.\n')
+        figure = input('Quelle figure scorer ? Ecrire en toute lettre comme dans la tableau du dessus.\n')
+    while figure in player.already_scored:
+        print('Tu as déjà scoré cette figure.')
+        figure = input('Quelle figure scorer ? Ecrire en toute lettre comme dans la tableau du dessus.\n')
 
-def score(player, dice, figure):
+    return figure
+
+def choice_function(figure, dice):
+    actions = {
+        '1': lambda: dice.count_values(1),
+        '2': lambda: dice.count_values(2),
+        '3': lambda: dice.count_values(3),
+        '4': lambda: dice.count_values(4),
+        '5': lambda: dice.count_values(5),
+        '6': lambda: dice.count_values(6),
+        'Brelan': lambda: dice.count_brelan(),
+        'Carré': lambda: dice.count_carre(),
+        'Full': lambda: dice.count_full_house(),
+        'Petite suite': lambda: dice.count_little_straight(),
+        'Grande suite': lambda: dice.count_large_straight(),
+        'Yam': lambda: dice.count_yahtzee(),
+        'Chance': lambda: dice.count_luck()
+    }
+
+    if figure in actions:
+        result = actions[figure]()  # Appelle la fonction correspondante
+        # print(f"Résultat pour '{figure}': {result}")  # Affichage pour débogage
+        return result
+    else:
+        print(f"La clé '{figure}' n'est pas reconnue.")
+        return None
     
-    pass
+
+def score(player, de, figure):
+    print(f'La figure à scorer est ' + figure)
+    valeur = choice_function(figure, de)
+    print(valeur)
+    setattr(player, player.association[figure], valeur)
+    player.already_scored.append(figure)
