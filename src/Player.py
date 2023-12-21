@@ -58,7 +58,7 @@ class Player:
         ]
         headers = ['Figure','Score']
         print(tabulate(data, headers=headers, tablefmt="rounded_outline"))
-        
+
 
 
     

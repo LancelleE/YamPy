@@ -1,6 +1,7 @@
 from src.Player import Player
 from src.Dice import Dice
 from src.Game import Game
+from src.func import choix_reroll
 
 if __name__ == '__main__':
     nb_player = int(input('How many players ?\n'))
@@ -25,17 +26,26 @@ if __name__ == '__main__':
             # p.get_score()
             dice = Dice()
             dice.announce_dices()
-            while dice.reroll_authorized():
-                nb_reroll = int(input('Nombre de dés à relancer : '))
-                if nb_reroll > 0:
-                    for _ in range(nb_reroll):
-                        change = input('Quel dé changer ? Ecrire par exemple D1 pour le dé 1.\n')
-                        dice.reroll(change)
-                        dice.decrease_rolls()
+            # Ajouter projection pour le joueur courant
+
+
+            if choix_reroll() == 'Y':
+                while dice.reroll_authorized():
+                    nb_reroll = int(input('Nombre de dés à relancer : '))
+                    if nb_reroll > 0:
+                        for _ in range(nb_reroll):
+                            change = input('Quel dé changer ? Ecrire par exemple D1 pour le dé 1.\n')
+                            dice.reroll(change)
+                            dice.decrease_rolls()
+                            # Ajouter projection
+                    else:
+                        break
+
                 else:
-                    break
+                    # Afficher projection
+                    # Demander à scorer
                 
-                dice.announce_dices()
+                    dice.announce_dices()
 
 
             break
